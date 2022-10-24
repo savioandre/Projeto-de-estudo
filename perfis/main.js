@@ -1,27 +1,35 @@
-let i = 0;
-while (i < 10) {
-    i++;
+const len = document.querySelectorAll('.rs').length;
+const index = document.querySelector('section').getAttribute('data-index');
+var pro = JSON.parse(localStorage.getItem(`profile${parseInt(index)}`)) || [];
+
+let teste = 0;
+while (teste < len) {
     document.querySelectorAll('.rs').forEach((a) => {
-        a.setAttribute('id', i++);
+        a.setAttribute('id', teste);
+        teste++;
     })
 };
 
 let res = document.querySelector('#btm');
 res.addEventListener('click', () => {
-    let i = 0;
-    while (i < 9) {
-        i++;
-        let a = document.getElementById(i).value;
-        localStorage.setItem(i, a);
+    let id = 0;
+    while (id < len) {
+        let a = document.getElementById(id).value;
+        pro.push({
+            ask: a
+        });
+        localStorage.clear();
+        localStorage.setItem(`profile${parseInt(index)}`, JSON.stringify(pro));
+        id += 1;
     }
     alert('Respostas Salvas!');
 });
 
 if (localStorage.length > 0) {
     let i = 0;
-    while (i < 9) {
-        i++;
-        let gf = localStorage.getItem(i).toString();
-        document.getElementById(i).value = `${gf}`;
+    while (i <= len) {
+        let gf = JSON.parse(localStorage.getItem(`profile${parseInt(index)}`))[i].ask;
+        document.getElementById(i).innerHTML = gf;
+        i += 1;
     }
 };
