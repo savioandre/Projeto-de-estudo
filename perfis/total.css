@@ -72,18 +72,10 @@ textarea {
 }
 
 #btm {
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  background: rgb(38, 125, 255);
-  color: #fff;
+  color: rgb(38, 125, 255);
   align-self: center;
   cursor: pointer;
   font-weight: 800;
-}
-
-#btm:hover {
-  background: rgb(23, 113, 248);
 }
 
 a.bk {
